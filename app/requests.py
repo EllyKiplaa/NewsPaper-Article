@@ -1,6 +1,6 @@
 from app import app
 import urllib.request,json
-from .models import news,Articles
+from .models import News,Articles
 
 # News = news.News
 
@@ -8,7 +8,7 @@ from .models import news,Articles
 apiKey = None
 
 
-# getting the sources url
+# getting the news url
 base_url = None
 articles_url = None
 
@@ -58,7 +58,7 @@ def process_results(news_list):
         country = news_item.get('country')
         language = news_item.get("language")
 
-        news_object = news(id,name,description,url,category,country,language)
+        news_object = News(id,name,description,url,category,country,language)
         news_results.append(news_object)
 
     return news_results
