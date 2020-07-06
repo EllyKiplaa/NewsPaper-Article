@@ -1,6 +1,7 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from ..request import get_news,get_articles
+from ..requests import get_news,get_articles
+from ..models import News
 
 @main.route('/')
 def index():
@@ -25,9 +26,9 @@ def new_articles(id):
     '''
     View news page function that returns the news details page and its data
     '''
-    news = get_news(id)
+    articles = get_news(id)
     title = f'{id} All news Highlights'
    
 
-    return render_template('headlines.html',title = title, news = news_articles )
+    return render_template('headlines.html',title = title, news = articles )
 

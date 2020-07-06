@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    {% import 'macros.html' as macro%}
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the best news highlights page </title>
-        {% endif %}
-    </head>
-       <body>
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
+
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+{% block content%}
+<div class="container">
         <!-- Technology News  -->
         <h3>  Technology News Headlines </h3>
         <hr>
@@ -21,16 +20,16 @@
             {{ macro.displayNewsList(business_news)}}
         </ul>
         <!-- Entertainment News -->
-        <h3></h3>
+        <h3> Entertainment News Headlines</h3>
         <ul>
             {{ macro.displayNewsList(entertainment_news)}}
         </ul>
 
             <!-- Sports News -->
-        <h3></h3>
+        <h3>Sports News Headlines</h3>
         <ul>
             {{ macro.displayNewsList(sports_news)}}
         </ul>
+</div>
 
-    </body>
-</html>
+{%endblock%}
