@@ -14,15 +14,15 @@ articles_url = None
 def configure_request(app):
         global api_key,base_url,articles_url
         api_key = app.config['NEWS_API_KEY']
-        base_url = app.config["NEWS_API_BASE_URL"]
+        base_url = app.config["SOURCES_API_BASE_URL"]
         articles_url = app.config['ARTICLES_BASE_URL']
 
 
 def get_news(category):
         '''
-        Function that gets the json response to our url request
+        Gets the json response to our url request
         '''
-        get_news_url = base_url.format(category,api_key)
+        get_news_url = base_url.format(category, api_key)
 
         with urllib.request.urlopen(get_news_url) as url:
                 get_news_data = url.read()
@@ -30,14 +30,14 @@ def get_news(category):
 
                 news_results = None
 
-                if get_news_response['news']:
-                    news_results_list = get_news_response['news']
-                    news_results = process_results(news_results_list)
-
+                if get_news_response['sources']:
+                        news_results_list = get_news_response['sources']
+                        news_results = process_articles(news_results_list)
 
         return news_results
 
-def process_results(news_list):
+
+def process_articles(news_list):
         '''
         Function  that processes the news result and transform them to a list of Objects
 
@@ -54,10 +54,11 @@ def process_results(news_list):
                 description = news_item.get('description')
                 url= news_item.get('url')
                 category = news_item.get('category')
-                country = news_item.get('country')
                 language = news_item.get("language")
+                country = news_item.get('country')
+             
 
-                news_object = News(id,name,description,url,category,country,language)
+                news_object = News(id,name,description,url,category,language,country)
                 news_results.append(news_object)
 
         return news_results
