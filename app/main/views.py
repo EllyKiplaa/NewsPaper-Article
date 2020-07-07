@@ -3,6 +3,7 @@ from . import main
 from ..requests import get_news,get_articles
 from ..models import News
 
+
 @main.route('/')
 def index():
 
@@ -18,7 +19,7 @@ def index():
     sports_news = get_news('sports')
     title = 'Get all the breaking and latest news Highlights'
     
-    return render_template('index.html', title = title, technology = technology_news,   business=  business_news, entertainment = entertainment_news, sports =sports_news )
+    return render_template('index.html', title = title, technology = technology_news,  business=  business_news, entertainment = entertainment_news, sports =sports_news )
 
 @main.route('/news/<int:id>')
 def new_articles(id):
