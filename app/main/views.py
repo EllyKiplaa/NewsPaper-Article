@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from ..requests import get_news,get_articles
+from ..requests import get_news
 from ..models import News
 
 
@@ -13,13 +13,13 @@ def index():
 
  
  # Getting popular top headlines
-    technology_news= get_news('technology')
-    business_news = get_news("business")
-    entertainment_news = get_news('entertainment')
-    sports_news = get_news('sports')
+    news_articles= get_news('')
+    # business_news = get_news("business")
+    # entertainment_news = get_news('entertainment')
+    # sports_news = get_news('sports')
     title = 'Get all the breaking and latest news Highlights'
     
-    return render_template('index.html', title = title, technology = technology_news,  business=  business_news, entertainment = entertainment_news, sports =sports_news )
+    return render_template('index.html', title = title, news=news_articles)
 
 @main.route('/news/<int:id>')
 def new_articles(id):
