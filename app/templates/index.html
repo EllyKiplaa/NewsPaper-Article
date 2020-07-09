@@ -10,26 +10,11 @@
 {% block content%}
 <div class="container">
         <!-- Technology News  -->
-        <h3>  Technology News Headlines </h3>
+        <h3>  Top news </h3>
         <hr>
-            {{ macro.displayNewsList(technology_news)}}
+            {{ macro.displayArticlesList(news)}}
         
-        <!--Business News  -->
-        <h3> Business News Headlines</h3>
-        <ul>
-            {{ macro.displayNewsList(business_news)}}
-        </ul>
-        <!-- Entertainment News -->
-        <h3> Entertainment News Headlines</h3>
-        <ul>
-            {{ macro.displayNewsList(entertainment_news)}}
-        </ul>
-
-            <!-- Sports News -->
-        <h3>Sports News Headlines</h3>
-        <ul>
-            {{ macro.displayNewsList(sports_news)}}
-        </ul>
+ 
 </div>
 
 {%endblock%}
