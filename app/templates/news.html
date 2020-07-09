@@ -8,13 +8,14 @@
 {% endblock %}
 
 {% block content%}
-<div class="container">
+<div class="container-fluid">
+<basefont size="2" color="green">
         <!-- Technology News  -->
-        <h3>  Headlines </h3>
+        <h3> Headlines </h3>
         <hr>
             {{ macro.displayNewsList(list)}}
         
- 
+ </basefont>
 </div>
 
 {%endblock%}
